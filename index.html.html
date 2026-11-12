@@ -1,0 +1,346 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompuVenta - Computadoras y Accesorios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --azul: #0b5ed7;
+            --oscuro: #1e293b;
+            --gris: #f1f5f9;
+            --sombra: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        body {
+            background-color: #fff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--oscuro), #2a4365);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--sombra);
+        }
+
+        .nav-contenedor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #22d3ee;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #22d3ee;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('computadoras.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--azul);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            background: #094fb8;
+            transform: translateY(-2px);
+        }
+
+        .seccion {
+            padding: 3rem 5%;
+        }
+
+        .seccion-titulo {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--oscuro);
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .tarjeta {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+        }
+
+        .tarjeta img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .tarjeta-contenido {
+            padding: 1.5rem;
+        }
+
+        .tarjeta h3 {
+            margin-bottom: 0.5rem;
+            color: var(--oscuro);
+        }
+
+        .precio {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #16a34a;
+            margin: 1rem 0;
+        }
+
+        .precio span {
+            font-size: 1rem;
+            color: #666;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+
+        .btn-comprar {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .sobre-nosotros {
+            background: var(--gris);
+        }
+
+        .sobre-contenido {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contacto {
+            background: var(--oscuro);
+            color: white;
+        }
+
+        .contacto-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contacto-form input,
+        .contacto-form textarea {
+            padding: 0.9rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .contacto-form button {
+            background: #22d3ee;
+            color: var(--oscuro);
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-contenedor {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav a {
+                margin: 0 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="nav-contenedor">
+            <div class="logo">💻 CompuVenta</div>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#productos">Productos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portada -->
+    <section class="hero" id="inicio">
+        <h1>Las mejores computadoras y accesorios</h1>
+        <p>Equipos de alto rendimiento para trabajo, estudio y juegos. Calidad garantizada y los mejores precios del mercado.</p>
+        <a href="#productos" class="btn">Ver Productos</a>
+    </section>
+
+    <!-- Productos -->
+    <section class="seccion" id="productos">
+        <h2 class="seccion-titulo"> Productos Destacados</h2>
+        <div class="productos-grid">
+            
+            <div class="tarjeta">
+                <img src="com.jpg" alt="Laptop">
+                <div class="tarjeta-contenido">
+                    <h3>Laptop Pro 15" Intel Core i7</h3>
+                    <p>16GB RAM • 512GB SSD • Pantalla Full HD</p>
+                    <p class="precio">Bs 4.299 <span>Bs 4.999</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="pc.jpg" alt="PC Gamer">
+                <div class="tarjeta-contenido">
+                    <h3>PC Gamer Completo RTX 4060</h3>
+                    <p>32GB RAM • 1TB SSD • Monitor 27" • Teclado y Ratón</p>
+                    <p class="precio">Bs 7.999 <span>Bs 9.500</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="monitor.jpg" alt="Monitor">
+                <div class="tarjeta-contenido">
+                    <h3>Monitor 27" 4K Ultra HD</h3>
+                    <p>144Hz • Respuesta 1ms • Pantalla IPS</p>
+                    <p class="precio">Bs 1.899 <span>Bs 2.300</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="illuminated-gaming-keyboard-stockcake.jpg" alt="Teclado">
+                <div class="tarjeta-contenido">
+                    <h3>Teclado Mecánico RGB</h3>
+                    <p>Switches azules • Programable • Aluminio</p>
+                    <p class="precio">Bs 249 <span>Bs 320</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="a.jpg" alt="Auriculares">
+                <div class="tarjeta-contenido">
+                    <h3>Auriculares Inalámbricos Pro</h3>
+                    <p>Cancelación de ruido • 30h batería • Micrófono</p>
+                    <p class="precio">Bs 399 <span>Bs 499</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="ssd.jpg" alt="Disco Duro">
+                <div class="tarjeta-contenido">
+                    <h3>Disco SSD 2TB Velocidad Extra</h3>
+                    <p>Lectura 7000MB/s • Instalación fácil</p>
+                    <p class="precio">Bs 349 <span>Bs 450</span></p>
+                    <button class="btn btn-comprar">🛒 Comprar</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section class="seccion sobre-nosotros" id="nosotros">
+        <h2 class="seccion-titulo">¿Quiénes Somos?</h2>
+        <div class="sobre-contenido">
+            <p>En <strong>CompuVenta</strong> somos tu tienda de confianza en Bolivia. Llevamos más de 10 años ofreciendo computadoras, equipos y accesorios de las mejores marcas. Todos nuestros productos tienen garantía oficial y soporte técnico propio.</p>
+            <br>
+            <p>✅ Envíos a todo el país<br>
+            ✅ Garantía de 1 año en todos los productos<br>
+            ✅ Asesoría personalizada gratuita<br>
+            ✅ Equipos probados y verificados</p>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="seccion contacto" id="contacto">
+        <h2 class="seccion-titulo" style="color:white;">📩 Escríbenos</h2>
+        <form class="contacto-form">
+            <input type="text" placeholder="Tu Nombre" required>
+            <input type="email" placeholder="Tu Correo" required>
+            <input type="tel" placeholder="Tu Teléfono">
+            <textarea rows="4" placeholder="Tu mensaje o consulta"></textarea>
+            <button type="submit" class="btn">Enviar Mensaje al 72890438</button>
+        </form>
+    </section>
+
+    <!-- Pie -->
+    <footer>
+        <p>💻 CompuVenta — Tienda de Computadoras y Accesorios</p>
+        <p>📍 sucre, Bolivia | 📞 +591 72890438 | ✉️ ventas@compuventa.bo</p>
+        <br>
+        <p>© 2026 CompuVenta — Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
